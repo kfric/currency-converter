@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export function App() {
   const [currencies, setCurrencies] = useState({
@@ -177,6 +177,12 @@ export function App() {
       ZWL: 393.251595,
     },
   })
+
+  useEffect(async function () {
+    // THIS is where I want my API access to go!
+
+    console.log('it mounted!')
+  }, [])
 
   return (
     <div>
