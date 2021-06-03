@@ -27,38 +27,37 @@ export function App() {
       <header>
         <h1>Currency Converter</h1>
       </header>
-      <main>
-        <section>
-          ${/* create input type 'number' */}
-          <input
-            type="number"
-            // set value to AMOUNT
-            value={amount}
-            // create onChange event setSTATE of AMOUNT
-            onChange={(event) => setAmount(event.target.value)}
-          />{' '}
-          USD
-        </section>
-        <section>
-          <ul>
-            {/* get each entry of the array of rates from the 
+      <section className="input-field">
+        ${/* create input type 'number' */}
+        <input
+          type="number"
+          // set value to AMOUNT
+          value={amount}
+          min="0"
+          // create onChange event setSTATE of AMOUNT
+          onChange={(event) => setAmount(event.target.value)}
+        />{' '}
+        USD
+      </section>
+      <section className="results">
+        <ul>
+          {/* get each entry of the array of rates from the 
             currencies array */}
-            {Object.entries(currencies.rates).map(
-              // accept the two properties of the array AND the index of each object
-              ([currency, currencyValue], index) => {
-                return (
-                  // assign a key for the li's to use
-                  <li key={index}>
-                    {/* API default rate from EU...*0.82 to get USD*/}
-                    {/* around the int down to 2 decimals */}
-                    {currency}: {(currencyValue * amount * 0.82).toFixed(2)}
-                  </li>
-                )
-              }
-            )}
-          </ul>
-        </section>
-      </main>
+          {Object.entries(currencies.rates).map(
+            // accept the two properties of the array AND the index of each object
+            ([currency, currencyValue], index) => {
+              return (
+                // assign a key for the li's to use
+                <li key={index}>
+                  {/* API default rate from EU...*0.82 to get USD*/}
+                  {/* around the int down to 2 decimals */}
+                  {currency}: {(currencyValue * amount * 0.82).toFixed(2)}
+                </li>
+              )
+            }
+          )}
+        </ul>
+      </section>
     </div>
   )
 }
